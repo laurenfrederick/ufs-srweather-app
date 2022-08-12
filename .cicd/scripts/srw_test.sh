@@ -243,3 +243,5 @@ results="$(get_results |\
 # exit with a non-zero code that equals the difference.
 successes="$(awk '$2 == "SUCCESS" {print $1}' <<< "${results}" | wc -l)"
 exit "$(( ${#we2e_tests[@]} - ${successes} ))"
+
+python ${workspace}/regional_workflow/tests/WE2E/create_WE2E_resource_summary.py -e ${workspace}/expt_dirs/ > "${workspace}/we2e_test_details-${platform}-${SRW_COMPILER}.txt.txt"
